@@ -22,6 +22,10 @@ io.on('connection', (socket) => {
         console.log(message);
         io.emit("displayMessage", (message));
     });
+    socket.on('sendToMe', (message) =>{
+        console.log(message);
+        socket.emit("displayMessage", (message));
+    });
 });
 
 
