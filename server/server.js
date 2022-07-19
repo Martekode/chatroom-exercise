@@ -18,9 +18,9 @@ const io = require('socket.io')(server);
 io.on('connection', (socket) => {
     counter++;
     console.log(counter + ' someone connected');
-    socket.on('sendToAll', (message) =>{
-        console.log(message);
-        io.emit("displayMessage", (message));
+    socket.on('sendToAll', (data) =>{
+        //console.log(message);
+        io.emit("displayMessage", (data));
     });
     socket.on('sendToMe', (message) =>{
         console.log(message);
