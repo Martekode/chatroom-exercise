@@ -9,7 +9,7 @@ our instructions were clear: make a basic chatroom
 
 ____
 my html
-```html
+```xml
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,3 +54,51 @@ socket.on('displayMessage', (message) => {
 up until this point u connected with server and made it interactive on connection. 
 I implemented the button and the input so that it pushed the message to the server.
 the server catches it and sends it back at the client in html format. (send to all) 
+
+_____________
+After this i tried to implement a username.
+
+```xml
+        <label for="identifier"></label>
+        <input id="identifier" name="identifier" type="text" placeholder="username">
+        <button id="init">confirm username</button>
+```
+i added some input for the user to choose their username after they press it it should display the chatroom and not display the username inputfield and button.
+
+```js
+initButton.addEventListener("click", () => {
+    if (!identifier.value){
+        errorMessage = "fill in username";
+    }else{
+        username = identifier.value;
+        chatRoom.style.display = "inherit";
+        identifier.style.display = "none";
+        initButton.style.display = "none";
+    }
+});
+```
+i then made it so it passes it to the server via an object called data:
+
+```js
+toAll.addEventListener("click", () =>{
+    // console.log(identifier);
+    // console.log(username);
+        let data = {};
+        data.message = messageBox.value;
+        data.username = username;
+        //console.log(data);
+        socket.emit("sendToAll", data);
+        //console.log(messageBox.value);
+    
+});
+```
+client side îîîî
+```js
+    socket.on('sendToAll', (data) =>{
+        //console.log(message);
+        io.emit("displayMessage", (data));
+    });
+```
+server side îîîî
+
+
