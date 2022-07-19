@@ -8,17 +8,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Joe Mama's Chat</h1>
-    <label for="inputChat">CHAT</label>
-    <input
-      id="inputChat"
-      type="text"
-      name="inputChat"
-      placeholder="type your message"
-    />
-    <button id="2ALL">2 ALL</button>
-    <button id="2ME">2 ME</button>
-    <div id="target"></div>
+    <div class="container">
+        <h1>Joe Mama's Chat</h1>
+        <div class="chatroom">
+            <div class="target" id="target"></div>
+            <input class="input"
+                id="inputChat"
+                type="text"
+                name="inputChat"
+                placeholder="type your message"
+            />
+            <button id="2ALL">2 ALL</button>
+            <button id="2ME">2 ME</button>
+        </div>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
   </body>
