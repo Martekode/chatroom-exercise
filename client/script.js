@@ -55,10 +55,10 @@ socket.on("displayMessage", (data) => {
 socket.on("displayList", (usernames) => {
     if (listTarget.innerHTML === ""){
         usernames.forEach(usrname => {
-            listTarget.innerHTML += "<br>" + usrname;
+            listTarget.innerHTML += "<br><span style='color:purple;'>" + usrname + "</span>";
         });
     }else{
-        listTarget.innerHTML += "<br>" + usernames[usernames.length - 1];
+        listTarget.innerHTML += "<br><span style='color:pruple;'>" + usernames[usernames.length - 1] + "</span>";
     }
    
 })
