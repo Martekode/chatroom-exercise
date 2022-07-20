@@ -21,6 +21,7 @@ initButton.addEventListener("click", () => {
         identifier.style.display = "none";
         initButton.style.display = "none";
         errorTarget.style.display ="none";
+        socket.emit("sendToList", username);
     }
 });
 //passing data
@@ -51,3 +52,8 @@ socket.on("displayMessage", (data) => {
         target.innerHTML += "<br><span style='color:blue;'>"+ data.message + "</span>";
     }
 });
+socket.on("displayList", (usernames) => {
+    usernames.forEach(usrname => {
+        listTarget.innerHTML += "<br>" + usrname;
+    });
+})
