@@ -22,11 +22,15 @@ io.on('connection', (socket) => {
         //console.log(message);
         io.emit("displayMessage", (data));
     });
-    socket.on('sendToMe', (message) =>{
-        console.log(message);
-        socket.emit("displayMessage", (message));
+    socket.on('sendToMe', (data) =>{
+        // console.log(message);
+        socket.emit("displayMessage", (data));
     });
 });
+// io.on('disconnect', () =>{
+//     counter--;
+//     console.log(counter + " connected");
+// })
 
 
 
