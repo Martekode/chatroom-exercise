@@ -12,6 +12,7 @@
         <h1>Joe Mama's Chat</h1>
         <label for="identifier"></label>
         <input id="identifier" name="identifier" type="text" placeholder="username">
+        <p id="errorMessage"></p>
         <button id="init">confirm username</button>
         <div id="chatroom" class="chatroom">
             <div class="target" id="target"></div>
@@ -25,6 +26,7 @@
             <button id="2ME">2 ME</button>
         </div>
     </div>
+    <div id="listTarget"></div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
   </body>
