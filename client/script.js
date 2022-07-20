@@ -22,6 +22,9 @@ initButton.addEventListener("click", () => {
         identifier.style.display = "none";
         initButton.style.display = "none";
         errorTarget.style.display ="none";
+        toAll.style.display = "inherit";
+        toMe.style.display = "inherit";
+        messageBox.style.display = "inherit";
         socket.emit("sendToList", username);
     }
 });
