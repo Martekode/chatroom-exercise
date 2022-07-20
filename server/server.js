@@ -1,6 +1,7 @@
 const express = require('express');
 const http = require('http');
 let usernames = [];
+let serverUser;
 let counter = 0;
 //requires above
 //defining application
@@ -28,10 +29,23 @@ io.on('connection', (socket) => {
         socket.emit("displayMessage", (data));
     });
     socket.on('sendToList',(username) => {
+        serverUser = username;
         usernames.push(username);
         io.emit("displayList", (usernames));
     })
+    socket.on("disconnecting", () => {
+        console.log("user has left");
+        usernames = removeItemOnce(usernames , serverUser);
+        io.emit("displayRemovedUsers", usernames);
+      });
 });
+function removeItemOnce(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+      arr.splice(index, 1);
+    }
+    return arr;
+  }
 // io.on('disconnect', () =>{
 //     counter--;
 //     console.log(counter + " connected");
