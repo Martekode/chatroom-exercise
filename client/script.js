@@ -62,3 +62,9 @@ socket.on("displayList", (usernames) => {
     }
    
 })
+socket.on("displayRemovedUsers", (usernames) =>{
+    listTarget.innerHTML = "";
+    usernames.forEach(username =>{
+        listTarget.innerHTML += "<br><span style='color:purple;'>" + username + "</span>";
+    })
+})
