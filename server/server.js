@@ -1,5 +1,6 @@
 const express = require('express');
 const http = require('http');
+let usernames = [];
 let counter = 0;
 //requires above
 //defining application
@@ -26,6 +27,10 @@ io.on('connection', (socket) => {
         // console.log(message);
         socket.emit("displayMessage", (data));
     });
+    socket.on('sendToList',(username) => {
+        usernames.push(username);
+        io.emit("displayList", (usernames));
+    })
 });
 // io.on('disconnect', () =>{
 //     counter--;
