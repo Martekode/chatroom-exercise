@@ -13,9 +13,18 @@ body{
 .chatroom{
     border:2px solid black;
     display: none;
+    overflow: scroll;
+}
+.input{
+    display: none;
+}
+.ME{
+    display: none;
+}
+.ALL{
+    display:none;
 }
 .target{
-    border-bottom:2px solid blue;
     width:95%;
     height: 20em;
     margin-inline:auto;
