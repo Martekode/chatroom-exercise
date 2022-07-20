@@ -34,7 +34,8 @@ io.on('connection', (socket) => {
         io.emit("displayList", (usernames));
     })
     socket.on("disconnecting", () => {
-        console.log("user has left");
+        counter--;
+        console.log("user has left: " + counter + " are connected");
         usernames = removeItemOnce(usernames , serverUser);
         io.emit("displayRemovedUsers", usernames);
       });
