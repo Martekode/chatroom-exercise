@@ -7,18 +7,20 @@ let target = document.getElementById("target");
 let identifier = document.getElementById("identifier");
 let initButton = document.getElementById("init");
 let chatRoom = document.getElementById("chatroom");
+let listTarget = document.getElementById('listTarget');
+let errorTarget = document.getElementById('errorMessage');
 // console.log(identifier);
 let username;
-let errorMessage = "ok";
 //button logic
 initButton.addEventListener("click", () => {
     if (!identifier.value){
-        errorMessage = "fill in username";
+        errorTarget.innerHTML = "fill in username";
     }else{
         username = identifier.value;
         chatRoom.style.display = "inherit";
         identifier.style.display = "none";
         initButton.style.display = "none";
+        errorTarget.style.display ="none";
     }
 });
 //passing data
@@ -35,12 +37,17 @@ toAll.addEventListener("click", () =>{
 });
 //to me 
 toMe.addEventListener("click", () => {
-    //console.log(hello);
-    socket.emit("sendToMe", messageBox.value);
-    console.log(messageBox.value);
+    let data = {};
+    data.message = messageBox.value
+    socket.emit("sendToMe", data);
+    console.log(data.message);
 });
 
 //receiving
 socket.on("displayMessage", (data) => {
-    target.innerHTML += "<br><span style='color:red;'>"+ data.username + ": </span>"+ data.message;
+    if (data.username) {
+        target.innerHTML += "<br><span style='color:red;'>"+ data.username + ": </span>"+ data.message;
+    }else{
+        target.innerHTML += "<br><span style='color:blue;'>"+ data.message + "</span>";
+    }
 });
