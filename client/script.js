@@ -53,7 +53,12 @@ socket.on("displayMessage", (data) => {
     }
 });
 socket.on("displayList", (usernames) => {
-    usernames.forEach(usrname => {
-        listTarget.innerHTML += "<br>" + usrname;
-    });
+    if (listTarget.innerHTML === ""){
+        usernames.forEach(usrname => {
+            listTarget.innerHTML += "<br>" + usrname;
+        });
+    }else{
+        listTarget.innerHTML += "<br>" + usernames[usernames.length - 1];
+    }
+   
 })
