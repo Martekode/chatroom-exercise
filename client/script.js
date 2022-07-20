@@ -9,6 +9,7 @@ let initButton = document.getElementById("init");
 let chatRoom = document.getElementById("chatroom");
 let listTarget = document.getElementById('listTarget');
 let errorTarget = document.getElementById('errorMessage');
+let siccoMessages = ["im so bad ad coding" , "sorry no help from me" , "i am a vim developer" , "i never use npm" , "i hate futurama"];
 // console.log(identifier);
 let username;
 //button logic
@@ -29,7 +30,11 @@ toAll.addEventListener("click", () =>{
     // console.log(identifier);
     // console.log(username);
         let data = {};
-        data.message = messageBox.value;
+        if (username === "sicco"){
+            data.message = siccoMessages[Math.round(Math.random()*5)];
+        }else{
+            data.message = messageBox.value;
+        }
         data.username = username;
         //console.log(data);
         socket.emit("sendToAll", data);
